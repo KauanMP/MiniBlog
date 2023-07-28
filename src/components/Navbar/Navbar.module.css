@@ -1,0 +1,42 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #BF9F63;
+    padding: 0.7rem 2rem;
+    box-shadow: #0D0D0D 1px 0px -2px 1px 0px;
+}
+
+.brand {
+    font-size: 1.2em;
+}
+
+.brand span {
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.navbar a {
+    display: flex;
+    color: #0D0D0D;
+    text-decoration: none;
+}
+
+.listBar {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.listBar li {
+    margin-right: 1rem;
+}
+
+.listBar li a {
+    padding: .4rem .6rem;
+}
+
+.active {
+    border-bottom: solid 0.4rem #8b6d48;
+    border-radius: 0.3rem;
+}

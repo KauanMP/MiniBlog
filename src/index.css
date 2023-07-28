@@ -19,7 +19,32 @@
 .Logo,-Type,-Mono-&-Marks---Collection-VII-4-hsla { color: hsla(33, 30, 26, 1); }
 .Logo,-Type,-Mono-&-Marks---Collection-VII-5-hsla { color: hsla(0, 0, 5, 1); }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-family: 'Poppins', sans-serif;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+a,
+nav button {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    color: #0D0D0D;
+    transition: 0.4s;
+    font-size: 1em;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
 }

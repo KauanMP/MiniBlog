@@ -10,7 +10,6 @@ import Register from "./pages/Register";
 function App() {
   return (
     <div>
-      <p>Dando inicio ao mini Blog</p>
       <BrowserRouter>
         <Navbar />
         <div className="Container">

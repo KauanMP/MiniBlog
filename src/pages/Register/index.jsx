@@ -25,7 +25,7 @@ const Register = () => {
           />
         </label>
         <label>
-          <span>E-mail:</span>
+          <span>Senha:</span>
           <input
             type="password"
             name="password"
@@ -34,7 +34,7 @@ const Register = () => {
           />
         </label>
         <label>
-          <span>E-mail:</span>
+          <span>Confirmar:</span>
           <input
             type="password"
             name="confirmPassword"

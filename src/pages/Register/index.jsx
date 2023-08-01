@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Register.module.css";
-import { useAuthentication } from './../../hooks/useAuthentications'
+import { useAuthentication } from "./../../hooks/useAuthentications";
 
 const Register = () => {
   // inputs state
@@ -11,8 +11,6 @@ const Register = () => {
   const [error, setError] = useState("");
 
   const auth = useAuthentication();
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,9 +36,9 @@ const Register = () => {
 
   useEffect(() => {
     if (auth.error) {
-      setError(auth.error)
+      setError(auth.error);
     }
-  }, [auth.error])
+  }, [auth.error]);
 
   return (
     <div className={styles.register}>
@@ -92,7 +90,15 @@ const Register = () => {
           />
         </label>
         {error && <p className="error">{error}</p>}
-        {auth.loading ? (<button style={{ margin: "1.6rem auto" }} disabled className="btn">Carregando...</button>) : (<button style={{ margin: "1.6rem auto" }} className="btn">Cadastrar</button>)}
+        {auth.loading ? (
+          <button style={{ margin: "1.6rem auto" }} disabled className="btn">
+            Carregando...
+          </button>
+        ) : (
+          <button style={{ margin: "1.6rem auto" }} className="btn">
+            Cadastrar
+          </button>
+        )}
       </form>
     </div>
   );

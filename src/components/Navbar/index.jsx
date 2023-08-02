@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
+import { useAuthentication } from "../../hooks/useAuthentications";
+import { useAuthValue } from "../../context/AuthContext";
+
 const Navbar = () => {
+  const { user } = useAuthValue();
+
   return (
     <nav className={styles.navbar}>
       <NavLink to="/" className={styles.brand}>
@@ -21,25 +26,48 @@ const Navbar = () => {
             to="/About"
             className={({ isActive }) => (isActive ? styles.active : "")}
           >
-            About
+            Sobre
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/Login"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/Register"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Register
-          </NavLink>
-        </li>
+        {!user ? (
+          <>
+            <li>
+              <NavLink
+                to="/Login"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Entrar
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Register"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Cadastrar
+              </NavLink>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <NavLink
+                to="/posts/create"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Novo Post
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

@@ -1,0 +1,21 @@
+.about {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about h2 {
+    color: hsl(33, 29%, 27%);
+}
+
+.about p {
+    color: rgba(19, 19, 19, 0.699);
+    margin-bottom: 2em;
+}
+
+.about a {
+    display: block;
+    margin-top: 15px;
+    padding: 10px 15px;
+}

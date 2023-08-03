@@ -1,10 +1,42 @@
+import styles from "./Home.module.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useFetchDocument } from "../../hooks/useFetchDocuments";
+import PostDetail from "../../components/PostsDetail.js";
 
 const Home = () => {
-  return (
-    <div>
-        <h1>Home</h1>
-    </div>
-  )
-}
+  const [query, setQuery] = useState("");
+  const { documents: posts, loading } = useFetchDocument("posts");
 
-export default Home
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div className={styles.home}>
+      <h1>Veja os nossos posts mais recentes</h1>
+      <form onSubmit={handleSubmit} className={styles.searchForm}>
+        <input
+          type="text"
+          placeholder="Ou busque por tags..."
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button className="btn btn-dark">Pesquisar</button>
+      </form>
+      <div>
+        {loading && <p>Carregando...</p>}
+        {posts && posts.map((post) => <PostDetail key={post.id} post={post} />)}
+        {posts && posts.length === 0 && (
+          <div className={styles.noPosts}>
+            <p>Não foram encontrador posts</p>
+            <Link to="./posts/create" className="btn">
+              Criar primeiro post
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Home;

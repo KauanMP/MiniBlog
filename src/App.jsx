@@ -18,6 +18,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import CreatePost from "./pages/CreatePost";
+import Search from "./pages/Search";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -44,6 +45,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
+              <Route path="/Search" element={<Search />} />
               <Route
                 path="/Login"
                 element={!user ? <Login /> : <Navigate to="/" />}

@@ -128,8 +128,6 @@ textarea {
 }
 
 .btn {
-  display: flex;
-  justify-content: center;
   background-color: #59462f;
   color: #fff;
   cursor: pointer;

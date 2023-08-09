@@ -3,8 +3,8 @@ import styles from "./EditPost.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
-import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
+import { useUpdatedDocument } from "../../hooks/useUpdateDocument";
 
 const EditPost = () => {
   const { id } = useParams();
@@ -28,7 +28,7 @@ const EditPost = () => {
   }, [post]);
 
   const { user } = useAuthValue();
-  const { insertDocument, response } = useInsertDocument("posts");
+  const { updatedDocument, response } = useUpdatedDocument("posts");
 
   const navigate = useNavigate();
 
@@ -50,14 +50,15 @@ const EditPost = () => {
     if (!title || !image || !tags || !body) {
       setFormError("Por favor, preencha todos os campos!");
     }
-    insertDocument({
+    const data = {
       title,
       image,
       body,
       tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-    });
+    };
+    updatedDocument(id, data);
 
     // redirecionar para pagina home
     navigate("/");
@@ -93,7 +94,11 @@ const EditPost = () => {
               />
             </label>
             <p className={styles.previewTitle}>Preview da imagem atual:</p>
-            <img className={styles.previewImage} src={post.image} alt={post.title} />
+            <img
+              className={styles.previewImage}
+              src={post.image}
+              alt={post.title}
+            />
             <label>
               <span>Conteúdo:</span>
               <textarea
